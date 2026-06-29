@@ -4,94 +4,100 @@ interface ConcertsProps {
 
 const translations = {
   en: {
-    heading: "Upcoming Concerts",
-    learnMore: "Learn More",
+    heading: "Achievements & Awards",
   },
   de: {
-    heading: "Kommende Konzerte",
-    learnMore: "Mehr erfahren",
+    heading: "Erfolge & Auszeichnungen",
   },
   ru: {
-    heading: "Предстоящие концерты",
-    learnMore: "Подробнее",
+    heading: "Достижения и награды",
   },
 }
 
-const concerts = {
+const achievements = {
   en: [
     {
-      date: "08.12.2024",
-      time: "18:00",
-      title: "Piano Recital",
-      venue: "Torhaus Hamburg",
-      location: "Hamburg",
+      year: "2025",
+      title: "1st Prize, International Competition",
+      detail: "Add the name of the award and the jury or organization that recognized you.",
+      tag: "Award",
     },
     {
-      date: "16.12.2024",
-      time: "19:00",
-      title: "Piano Recital HFMT",
-      venue: "Hamburg, Orchestra Studio",
-      location: "Hamburg",
+      year: "2024",
+      title: "Headline Performance",
+      detail: "Describe a major concert, festival or stage where you performed.",
+      tag: "Stage",
     },
     {
-      date: "21.12.2024",
-      time: "17:00",
-      title: "Charity Concert",
-      venue: "Rathaus Zehlendorf, Burgersaal",
-      location: "Berlin",
+      year: "2023",
+      title: "Album / Release",
+      detail: "Mention a release, single or project that became a milestone for you.",
+      tag: "Release",
+    },
+    {
+      year: "2022",
+      title: "Notable Collaboration",
+      detail: "Add a collaboration, feature or project with another artist or label.",
+      tag: "Project",
     },
   ],
   de: [
     {
-      date: "08.12.2024",
-      time: "18:00",
-      title: "Klavierabend",
-      venue: "Torhaus Hamburg",
-      location: "Hamburg",
+      year: "2025",
+      title: "1. Preis, Internationaler Wettbewerb",
+      detail: "Fügen Sie den Namen der Auszeichnung und die Jury oder Organisation hinzu.",
+      tag: "Auszeichnung",
     },
     {
-      date: "16.12.2024",
-      time: "19:00",
-      title: "Klavierabend HFMT",
-      venue: "Hamburg, Orchesterstudio",
-      location: "Hamburg",
+      year: "2024",
+      title: "Headline-Auftritt",
+      detail: "Beschreiben Sie ein großes Konzert, Festival oder eine Bühne.",
+      tag: "Bühne",
     },
     {
-      date: "21.12.2024",
-      time: "17:00",
-      title: "Benefizkonzert",
-      venue: "Rathaus Zehlendorf, Burgersaal",
-      location: "Berlin",
+      year: "2023",
+      title: "Album / Release",
+      detail: "Erwähnen Sie einen Release, eine Single oder ein Projekt als Meilenstein.",
+      tag: "Release",
+    },
+    {
+      year: "2022",
+      title: "Bemerkenswerte Kollaboration",
+      detail: "Fügen Sie eine Zusammenarbeit mit einem Künstler oder Label hinzu.",
+      tag: "Projekt",
     },
   ],
   ru: [
     {
-      date: "8 декабря 2024",
-      time: "18:00",
-      title: "Сольный концерт",
-      venue: "Торхаус Гамбург",
-      location: "Гамбург",
+      year: "2025",
+      title: "1-е место, международный конкурс",
+      detail: "Добавьте название награды и жюри или организацию, которая её вручила.",
+      tag: "Награда",
     },
     {
-      date: "16 декабря 2024",
-      time: "19:00",
-      title: "Концерт в HFMT",
-      venue: "Гамбург, Оркестровая студия",
-      location: "Гамбург",
+      year: "2024",
+      title: "Сольное выступление",
+      detail: "Опишите крупный концерт, фестиваль или сцену, где вы выступали.",
+      tag: "Сцена",
     },
     {
-      date: "21 декабря 2024",
-      time: "17:00",
-      title: "Благотворительный концерт",
-      venue: "Ратуша Целендорф, Бургерзаль",
-      location: "Берлин",
+      year: "2023",
+      title: "Альбом / релиз",
+      detail: "Упомяните релиз, сингл или проект, ставший для вас важной вехой.",
+      tag: "Релиз",
+    },
+    {
+      year: "2022",
+      title: "Заметная коллаборация",
+      detail: "Добавьте совместный проект с другим артистом или лейблом.",
+      tag: "Проект",
     },
   ],
 }
 
 export default function Concerts({ language }: ConcertsProps) {
   const t = translations[language]
-  const concertList = concerts[language]
+  const list = achievements[language]
 
   return (
     <section id="concerts" className="py-32 md:py-48 bg-background">
@@ -102,22 +108,18 @@ export default function Concerts({ language }: ConcertsProps) {
         </div>
 
         <div className="space-y-8">
-          {concertList.map((concert, idx) => (
+          {list.map((item, idx) => (
             <div key={idx} className="pb-8 border-b border-taupe/30 last:border-b-0">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 items-start">
                 <div>
-                  <h3 className="text-charcoal mb-1">{concert.date}</h3>
-                  <small className="text-taupe">{concert.time}</small>
+                  <h3 className="text-gold mb-1">{item.year}</h3>
+                  <span className="inline-block text-xs uppercase tracking-widest text-taupe border border-taupe/40 rounded-full px-3 py-1">
+                    {item.tag}
+                  </span>
                 </div>
-                <div className="md:col-span-2">
-                  <h3 className="text-charcoal mb-1">{concert.title}</h3>
-                  <p className="text-charcoal/70 mb-1">{concert.venue}</p>
-                  <small className="text-taupe">{concert.location}</small>
-                </div>
-                <div className="flex justify-start md:justify-end">
-                  <button className="text-gold hover:text-gold/80 transition-colors text-sm font-medium">
-                    {t.learnMore} &rarr;
-                  </button>
+                <div className="md:col-span-3">
+                  <h3 className="text-charcoal mb-2">{item.title}</h3>
+                  <p className="text-charcoal/70">{item.detail}</p>
                 </div>
               </div>
             </div>
